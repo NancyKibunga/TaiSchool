@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tai Fountain Christian School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#04342C;
+    --green-mid:#0F6E56;
+    --mint:#E1F5EE;
+    --gold:#BA7517;
+    --gold-light:#FAC775;
+    --cream:#FAEEDA;
+    --text:#1F2A25;
+    --text-soft:#5A6B62;
+    --border:#DCE6E0;
+    --white:#FFFFFF;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;background:var(--white);}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;color:var(--green);}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  button{font-family:inherit;cursor:pointer;}
+
+  /* Header */
+  header{background:var(--green);position:sticky;top:0;z-index:50;}
+  .headerbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1080px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .crest{width:38px;height:38px;border-radius:50%;background:var(--gold-light);color:var(--green);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:14px;flex-shrink:0;}
+  .brand-name{color:var(--gold-light);font-weight:600;font-size:16px;}
+  nav{display:flex;gap:28px;}
+  nav a{color:var(--cream);font-size:14px;font-weight:500;padding:6px 2px;border-bottom:2px solid transparent;transition:border-color .15s;}
+  nav a.active,nav a:hover{border-color:var(--gold-light);}
+  .hamburger{display:none;background:none;border:none;color:var(--cream);font-size:24px;line-height:1;}
+  .mobile-nav{display:none;flex-direction:column;background:var(--green);padding:0 24px 16px;}
+  .mobile-nav a{color:var(--cream);padding:10px 0;font-size:15px;border-top:1px solid rgba(255,255,255,.1);}
+  .mobile-nav.open{display:flex;}
+
+  @media(max-width:760px){
+    nav{display:none;}
+    .hamburger{display:block;}
+  }
+
+  /* Announcement bar */
+  .announce{background:var(--gold);color:#412402;text-align:center;font-size:13px;padding:6px 12px;font-weight:500;}
+
+  /* Hero */
+  .hero{background:var(--mint);padding:64px 24px;text-align:center;}
+  .hero h1{font-size:clamp(28px,4vw,42px);margin-bottom:14px;}
+  .hero p.sub{color:var(--green-mid);font-size:16px;margin-bottom:26px;}
+  .btn{display:inline-block;padding:12px 26px;border-radius:var(--radius);font-weight:600;font-size:14px;border:none;}
+  .btn-primary{background:var(--gold);color:#412402;}
+  .btn-primary:hover{background:var(--gold-light);}
+  .btn-outline{background:transparent;border:1.5px solid var(--green);color:var(--green);margin-left:12px;}
+
+  /* Feature row */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:40px 24px;max-width:1080px;margin:0 auto;}
+  .feature{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;}
+  .feature .ic{width:40px;height:40px;border-radius:50%;background:var(--mint);color:var(--green-mid);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-weight:600;}
+  .feature h3{font-size:15px;margin-bottom:6px;}
+  .feature p{font-size:13px;color:var(--text-soft);}
+  @media(max-width:760px){.features{grid-template-columns:1fr;}}
+
+  /* Section generic */
+  section.page{padding:56px 24px;max-width:1080px;margin:0 auto;}
+  section.page h2{font-size:26px;margin-bottom:8px;}
+  section.page .lead{color:var(--text-soft);margin-bottom:28px;max-width:640px;}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+  .card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;}
+  .card h3{font-size:16px;margin-bottom:6px;}
+  .card p{font-size:13px;color:var(--text-soft);}
+  .badge{display:inline-block;background:var(--mint);color:var(--green-mid);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
+
+  .testimonial{background:var(--cream);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:18px 22px;font-style:italic;color:var(--text);margin-top:10px;}
+  .testimonial cite{display:block;margin-top:8px;font-style:normal;font-size:13px;color:var(--text-soft);}
+
+  table.termdates{width:100%;border-collapse:collapse;font-size:14px;}
+  table.termdates th,table.termdates td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);}
+  table.termdates th{color:var(--green-mid);font-size:12px;text-transform:uppercase;letter-spacing:.03em;}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+  .info-row{display:flex;gap:10px;margin-bottom:14px;font-size:14px;}
+  .info-row .k{color:var(--green-mid);font-weight:600;min-width:80px;}
+  .whatsapp-btn{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 20px;border-radius:var(--radius);font-weight:600;font-size:14px;margin-top:10px;}
+
+  form.contact-form{display:flex;flex-direction:column;gap:12px;}
+  form.contact-form input,form.contact-form textarea{padding:11px 12px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;}
+  form.contact-form textarea{min-height:100px;resize:vertical;}
+  form.contact-form label{font-size:13px;font-weight:600;color:var(--green-mid);margin-bottom:-6px;}
+
+  footer{background:var(--green);color:var(--cream);padding:36px 24px 20px;margin-top:40px;}
+  .footer-wrap{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-wrap h4{color:var(--gold-light);font-family:'Fraunces',serif;font-size:15px;margin-bottom:10px;}
+  .footer-wrap p, .footer-wrap a{font-size:13px;color:#CFE3DB;}
+  .footer-bottom{text-align:center;font-size:12px;color:#8FAFA2;margin-top:24px;border-top:1px solid rgba(255,255,255,.1);padding-top:16px;}
+
+  [data-page]{display:none;}
+  [data-page].active{display:block;}
+</style>
+</head>
+<body>
+
+<div class="announce">Placeholder announcement — Term 2 opens Monday, May 4. Replace this line in the Site Editor section of this file.</div>
+
+<header>
+  <div class="headerbar">
+    <div class="brand">
+      <div class="crest">TF</div>
+      <span class="brand-name">Tai Fountain Christian School</span>
+    </div>
+    <nav id="desktop-nav">
+      <a href="#" data-nav="home" class="active">Home</a>
+      <a href="#" data-nav="about">About</a>
+      <a href="#" data-nav="academics">Academics</a>
+      <a href="#" data-nav="news">News</a>
+      <a href="#" data-nav="contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu">&#9776;</button>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#" data-nav="home">Home</a>
+    <a href="#" data-nav="about">About</a>
+    <a href="#" data-nav="academics">Academics</a>
+    <a href="#" data-nav="news">News</a>
+    <a href="#" data-nav="contact">Contact</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <div data-page="home" class="active">
+    <div class="hero">
+      <h1>Excellence in learning, built on faith</h1>
+      <p class="sub">Playgroup to Grade 6 &middot; CBC curriculum &middot; Nairobi, Kenya</p>
+      <a href="#" class="btn btn-primary" data-nav="contact">Enroll now</a>
+      <a href="#" class="btn btn-outline" data-nav="about">Learn more</a>
+    </div>
+    <div class="features">
+      <div class="feature"><div class="ic">A</div><h3>CBC academics</h3><p>Placeholder text — a short line on the Competency-Based Curriculum approach here.</p></div>
+      <div class="feature"><div class="ic">B</div><h3>School transport</h3><p>Placeholder text — mention transport routes covered, once confirmed.</p></div>
+      <div class="feature"><div class="ic">C</div><h3>Christian values</h3><p>Placeholder text — a line on the faith foundation of the school day.</p></div>
+    </div>
+    <section class="page">
+      <h2>What parents say</h2>
+      <p class="lead">Placeholder testimonials — replace with real quotes once collected.</p>
+      <div class="testimonial">"Placeholder quote from a parent about their experience at the school."<cite>— Parent name, class of child</cite></div>
+    </section>
+  </div>
+
+  <!-- ABOUT -->
+  <div data-page="about">
+    <section class="page">
+      <span class="badge">About us</span>
+      <h2>Our story</h2>
+      <p class="lead">Placeholder — replace with the school's real history and founding story.</p>
+      <div class="card-grid">
+        <div class="card"><h3>Our mission</h3><p>Placeholder mission statement — one or two sentences on what the school exists to do.</p></div>
+        <div class="card"><h3>Our motto</h3><p>Every child, by name and need.</p></div>
+        <div class="card"><h3>Our values</h3><p>Placeholder — list 3–4 core values (e.g. faith, integrity, community, excellence).</p></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ACADEMICS -->
+  <div data-page="academics">
+    <section class="page">
+      <span class="badge">Academics</span>
+      <h2>CBC curriculum, by grade band</h2>
+      <p class="lead">Placeholder overview of the Competency-Based Curriculum as taught at TFCS.</p>
+      <div class="card-grid">
+        <div class="card"><h3>Playgroup</h3><p>Placeholder — ages and focus areas.</p></div>
+        <div class="card"><h3>PP1 &ndash; PP2</h3><p>Placeholder — pre-primary focus areas.</p></div>
+        <div class="card"><h3>Grade 1 &ndash; 3</h3><p>Placeholder — lower primary focus areas.</p></div>
+        <div class="card"><h3>Grade 4 &ndash; 6</h3><p>Placeholder — upper primary focus areas.</p></div>
+      </div>
+    </section>
+    <section class="page">
+      <h2>Term dates</h2>
+      <table class="termdates">
+        <tr><th>Term</th><th>Opens</th><th>Closes</th></tr>
+        <tr><td>Term 1</td><td>Placeholder</td><td>Placeholder</td></tr>
+        <tr><td>Term 2</td><td>Placeholder</td><td>Placeholder</td></tr>
+        <tr><td>Term 3</td><td>Placeholder</td><td>Placeholder</td></tr>
+      </table>
+    </section>
+  </div>
+
+  <!-- NEWS -->
+  <div data-page="news">
+    <section class="page">
+      <span class="badge">News</span>
+      <h2>Announcements</h2>
+      <p class="lead">Placeholder news items — replace once real announcements are ready.</p>
+      <div class="card-grid">
+        <div class="card"><h3>Placeholder headline one</h3><p>Placeholder short summary of the announcement.</p></div>
+        <div class="card"><h3>Placeholder headline two</h3><p>Placeholder short summary of the announcement.</p></div>
+        <div class="card"><h3>Placeholder headline three</h3><p>Placeholder short summary of the announcement.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT -->
+  <div data-page="contact">
+    <section class="page">
+      <span class="badge">Contact</span>
+      <h2>Get in touch</h2>
+      <p class="lead">Placeholder — confirm real phone, email, and address before this goes live.</p>
+      <div class="contact-grid">
+        <div>
+          <div class="info-row"><span class="k">Address</span><span>Placeholder address, Nairobi, Kenya</span></div>
+          <div class="info-row"><span class="k">Phone</span><span>Placeholder phone number</span></div>
+          <div class="info-row"><span class="k">Email</span><span>Placeholder email address</span></div>
+          <div class="info-row"><span class="k">Hours</span><span>Monday &ndash; Friday, 8:00am &ndash; 4:00pm</span></div>
+          <a href="#" class="whatsapp-btn">Message us on WhatsApp</a>
+        </div>
+        <form class="contact-form">
+          <label>Name</label>
+          <input type="text" placeholder="Your name">
+          <label>Phone or email</label>
+          <input type="text" placeholder="How we can reach you">
+          <label>Message</label>
+          <textarea placeholder="Your message"></textarea>
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-wrap">
+    <div>
+      <h4>Tai Fountain Christian School</h4>
+      <p>Playgroup to Grade 6 &middot; CBC curriculum</p>
+      <p>Every child, by name and need.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Placeholder phone</p>
+      <p>Placeholder email</p>
+      <p>Placeholder address, Nairobi</p>
+    </div>
+    <div>
+      <h4>Quick links</h4>
+      <p><a href="#" data-nav="admissions">Admissions</a></p>
+      <p><a href="#" data-nav="academics">Academics</a></p>
+      <p><a href="#" data-nav="contact">Contact</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; <span id="year"></span> Tai Fountain Christian School. Website template — content pending final review.</div>
+</footer>
+
+<script>
+  // ---- SITE EDITOR ----
+  // To change navigation, colors, or placeholder text, edit the CSS variables
+  // at the top of <style> and the placeholder text inside each [data-page] block.
+  // Each page is a plain <div data-page="..."> block — nothing else needs to change
+  // when you edit copy.
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const navLinks = document.querySelectorAll('[data-nav]');
+  const pages = document.querySelectorAll('[data-page]');
+  const mobileNav = document.getElementById('mobile-nav');
+  const hamburger = document.getElementById('hamburger-btn');
+
+  function showPage(name){
+    pages.forEach(p => p.classList.toggle('active', p.dataset.page === name));
+    document.querySelectorAll('#desktop-nav a').forEach(a => a.classList.toggle('active', a.dataset.nav === name));
+    mobileNav.classList.remove('open');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = link.dataset.nav;
+      if (document.querySelector('[data-page="'+target+'"]')) {
+        showPage(target);
+      }
+    });
+  });
+
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
